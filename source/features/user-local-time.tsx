@@ -14,12 +14,6 @@ interface Commit {
 	sha: string;
 }
 
-const timeFormatter = new Intl.DateTimeFormat('en-US', {
-	hour: 'numeric',
-	minute: 'numeric',
-	hour12: false
-});
-
 async function loadCommitPatch(commitUrl: string): Promise<string> {
 	const {textContent} = await api.v3(commitUrl, {
 		json: false,
@@ -119,7 +113,7 @@ function init(): void {
 
 		const now = new Date();
 		now.setMinutes(parseOffset(date) + now.getTimezoneOffset() + now.getMinutes());
-		placeholder.textContent = timeFormatter.format(now);
+		placeholder.textContent = (<local-time minute="numeric" hour="numeric" datetime={now.toISOString()}/>).textContent!;
 		container.title = `Timezone guessed from their last commit: ${date}`;
 	});
 }

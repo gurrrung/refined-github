@@ -48,6 +48,7 @@ declare namespace JSX {
 		'include-fragment': BaseIntrinsicElement & {src?: string};
 		'details-menu': BaseIntrinsicElement & {src?: string; preload?: boolean};
 		'time-ago': BaseIntrinsicElement & {datetime: string; format?: string};
+		'local-time':BaseIntrinsicElement & {datetime: string; minute?: string; hour?: string};
 		'relative-time': BaseIntrinsicElement & {datetime: string; title: string};
 		'details-dialog': BaseIntrinsicElement & {tabindex: string};
 	}
